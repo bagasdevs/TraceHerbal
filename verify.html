@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Produk - TraceHerbal</title>
+    <meta name="description" content="Verifikasi keaslian produk herbal dengan teknologi blockchain">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b' },
+                        accent: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes scan {
+
+            0%,
+            100% {
+                top: 20%;
+            }
+
+            50% {
+                top: 80%;
+            }
+        }
+
+        .scan-line {
+            animation: scan 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-slate-50 min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2 text-primary-700 font-bold text-xl">
+                    <svg viewBox="0 0 32 32" fill="none" class="w-8 h-8">
+                        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+                        <path
+                            d="M16 6C16 6 10 12 10 18C10 21.3137 12.6863 24 16 24C19.3137 24 22 21.3137 22 18C22 12 16 6 16 6Z"
+                            fill="currentColor" />
+                    </svg>
+                    TraceHerbal
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="index.html"
+                        class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Beranda</a>
+                    <a href="login.html"
+                        class="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all">Masuk</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scanner Section -->
+    <section id="scanner-section" class="pt-24 pb-16 px-4">
+        <div class="max-w-md mx-auto text-center">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">Verifikasi Keaslian Produk</h1>
+            <p class="text-slate-600 mb-8">Scan QR code atau masukkan kode produk secara manual</p>
+
+            <!-- Scanner -->
+            <div class="relative bg-slate-900 rounded-3xl overflow-hidden aspect-square mb-6">
+                <div class="absolute inset-8 border-4 border-accent-500 rounded-2xl">
+                    <div class="scan-line absolute left-0 right-0 h-1 bg-accent-500 shadow-lg shadow-accent-500/50">
+                    </div>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <svg class="w-24 h-24 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                    </svg>
+                </div>
+            </div>
+
+            <button onclick="startScan()"
+                class="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Scan QR Code
+            </button>
+
+            <!-- Divider -->
+            <div class="flex items-center gap-4 my-8">
+                <div class="flex-1 h-px bg-slate-200"></div>
+                <span class="text-sm text-slate-400 font-medium">ATAU</span>
+                <div class="flex-1 h-px bg-slate-200"></div>
+            </div>
+
+            <!-- Manual Input -->
+            <div class="flex gap-3">
+                <input type="text" id="productCode" placeholder="Masukkan kode produk (contoh: JM2025-015)"
+                    class="flex-1 px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all">
+                <button onclick="verifyProduct()"
+                    class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-colors">Cek</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section id="result-section" class="hidden pt-24 pb-16 px-4">
+        <div class="max-w-3xl mx-auto">
+            <!-- Verification Status -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 text-center mb-6">
+                <div
+                    class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-emerald-600 mb-2">PRODUK TERVERIFIKASI ASLI</h2>
+                <p class="text-slate-600">Produk ini terdaftar di blockchain dan diproduksi oleh UMKM terverifikasi</p>
+            </div>
+
+            <!-- Product Info -->
+            <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden mb-6">
+                <div class="grid md:grid-cols-2 gap-6 p-6">
+                    <!-- Image -->
+                    <div
+                        class="aspect-video bg-gradient-to-br from-amber-100 to-amber-200 rounded-2xl flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&h=300&fit=crop"
+                            alt="Jamu Kunyit Asam" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <!-- Details -->
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm font-medium rounded-lg">✓
+                                Terverifikasi</span>
+                            <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm font-medium rounded-lg">Jamu
+                                Tradisional</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Jamu Kunyit Asam</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between py-2 border-b border-slate-100"><span
+                                    class="text-slate-500">Kemasan</span><span class="font-medium">Sachet 25ml</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-slate-100"><span
+                                    class="text-slate-500">Batch</span><span class="font-semibold">#JM2025-015</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-slate-100"><span
+                                    class="text-slate-500">Produksi</span><span>13 Januari 2025</span></div>
+                            <div class="flex justify-between py-2 border-b border-slate-100"><span
+                                    class="text-slate-500">Kadaluarsa</span><span>13 Januari 2026</span></div>
+                            <div class="flex justify-between py-2"><span class="text-slate-500">PIRT</span><span>P-IRT
+                                    2093302010123</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 mb-6">
+                <h3 class="text-lg font-bold text-slate-900 mb-6">📦 Perjalanan Produk</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center">
+                        <div
+                            class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm mb-1">Bahan Baku</h4>
+                        <p class="text-xs text-slate-500">10 Jan 2025</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm mb-1">Produksi</h4>
+                        <p class="text-xs text-slate-500">12 Jan 2025</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm mb-1">Pengemasan</h4>
+                        <p class="text-xs text-slate-500">13 Jan 2025</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm mb-1">Distribusi</h4>
+                        <p class="text-xs text-slate-500">13 Jan 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producer Info -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 mb-6">
+                <h3 class="text-lg font-bold text-slate-900 mb-4">🏭 Informasi Produsen</h3>
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-16 h-16 bg-primary-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl shrink-0">
+                        JS</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-bold text-slate-900">Jamu Sehat UMKM</h4>
+                            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">✓
+                                Verified</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-3">Produsen jamu tradisional berkualitas sejak 2018. Bahan
+                            alami dari petani lokal.</p>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div><span class="text-slate-400 text-xs block">Alamat</span><span class="font-medium">Tidar
+                                    Selatan, Magelang</span></div>
+                            <div><span class="text-slate-400 text-xs block">Kontak</span><span class="font-medium">+62
+                                    812-3456-7890</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blockchain Proof -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 mb-6">
+                <h4 class="flex items-center gap-2 font-semibold mb-4">
+                    <svg class="w-5 h-5 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    Bukti Blockchain
+                </h4>
+                <div class="space-y-3 text-sm font-mono">
+                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 py-2 border-b border-slate-700">
+                        <span class="text-slate-400">Transaction Hash</span>
+                        <span class="text-accent-400 break-all text-xs" id="txHash">0x7a8f9b2c1d3e4f5a...3d2e</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-700">
+                        <span class="text-slate-400">Block</span>
+                        <span class="text-white">#12,345,678</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-700">
+                        <span class="text-slate-400">Timestamp</span>
+                        <span class="text-white">13 Jan 2025, 10:30 WIB</span>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <span class="text-slate-400">Network</span>
+                        <span class="text-white">Polygon Mainnet</span>
+                    </div>
+                </div>
+                <a href="https://polygonscan.com" target="_blank"
+                    class="mt-4 w-full py-3 bg-accent-500 hover:bg-accent-400 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Lihat di Polygon Explorer
+                </a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="resetScan()"
+                    class="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-2xl transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                    </svg>
+                    Scan Produk Lain
+                </button>
+                <button
+                    class="px-8 py-4 border-2 border-red-300 text-red-600 hover:bg-red-50 font-semibold rounded-2xl transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    Laporkan Palsu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
+
+    <script src="app.js"></script>
+    <script>
+        function startScan() {
+            showToast('Kamera aktif. Arahkan ke QR code...', 'warning');
+            setTimeout(() => {
+                document.getElementById('productCode').value = 'JM2025-015';
+                verifyProduct();
+            }, 1500);
+        }
+
+        function verifyProduct() {
+            const code = document.getElementById('productCode').value;
+            if (!code) {
+                showToast('Masukkan kode produk terlebih dahulu', 'error');
+                return;
+            }
+            showToast('Memverifikasi produk...', 'warning');
+            setTimeout(() => {
+                document.getElementById('scanner-section').classList.add('hidden');
+                document.getElementById('result-section').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                showToast('Produk berhasil diverifikasi!', 'success');
+            }, 1500);
+        }
+
+        function resetScan() {
+            document.getElementById('scanner-section').classList.remove('hidden');
+            document.getElementById('result-section').classList.add('hidden');
+            document.getElementById('productCode').value = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showToast(message, type) {
+            const colors = { success: 'bg-emerald-500', error: 'bg-red-500', warning: 'bg-amber-500' };
+            const toast = document.createElement('div');
+            toast.className = `${colors[type]} text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 animate-slide-in`;
+            toast.innerHTML = `<span>${message}</span>`;
+            document.getElementById('toastContainer').appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+    </script>
+</body>
+
+</html>

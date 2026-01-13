@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - TraceHerbal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b' },
+                        accent: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased min-h-screen flex">
+    <!-- Left Side - Illustration -->
+    <div
+        class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 hero-pattern flex-col justify-between p-12">
+        <div>
+            <a href="index.html" class="flex items-center gap-2 text-white font-bold text-2xl">
+                <svg viewBox="0 0 32 32" fill="none" class="w-10 h-10">
+                    <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+                    <path
+                        d="M16 6C16 6 10 12 10 18C10 21.3137 12.6863 24 16 24C19.3137 24 22 21.3137 22 18C22 12 16 6 16 6Z"
+                        fill="currentColor" />
+                </svg>
+                TraceHerbal
+            </a>
+        </div>
+
+        <div class="text-white">
+            <h1 class="text-4xl font-bold mb-4 leading-tight">Kelola Produk Herbal<br>dengan Transparansi<br>Blockchain
+            </h1>
+            <p class="text-primary-200 text-lg mb-8">Platform blockchain pertama untuk verifikasi keaslian produk jamu
+                Indonesia</p>
+
+            <!-- Stats -->
+            <div class="flex gap-8">
+                <div>
+                    <div class="text-3xl font-bold text-white">2.263</div>
+                    <div class="text-primary-300 text-sm">UMKM Terdaftar</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">15K+</div>
+                    <div class="text-primary-300 text-sm">Produk Verified</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">99.9%</div>
+                    <div class="text-primary-300 text-sm">Uptime</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-primary-300 text-sm">
+            © 2025 TraceHerbal. Powered by Polygon.
+        </div>
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8">
+        <div class="w-full max-w-md">
+            <!-- Mobile Logo -->
+            <div class="lg:hidden text-center mb-8">
+                <a href="index.html" class="inline-flex items-center gap-2 text-primary-700 font-bold text-2xl">
+                    <svg viewBox="0 0 32 32" fill="none" class="w-10 h-10">
+                        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+                        <path
+                            d="M16 6C16 6 10 12 10 18C10 21.3137 12.6863 24 16 24C19.3137 24 22 21.3137 22 18C22 12 16 6 16 6Z"
+                            fill="currentColor" />
+                    </svg>
+                    TraceHerbal
+                </a>
+            </div>
+
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Selamat Datang!</h2>
+                <p class="text-slate-600">Masuk ke akun produsen Anda</p>
+            </div>
+
+            <form id="loginForm" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
+                    <div class="relative">
+                        <input type="email" id="email" placeholder="nama@email.com" required
+                            class="w-full px-4 py-3.5 pl-12 border-2 border-slate-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all">
+                        <svg class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
+                    <div class="relative">
+                        <input type="password" id="password" placeholder="••••••••" required
+                            class="w-full px-4 py-3.5 pl-12 border-2 border-slate-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all">
+                        <svg class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <button type="button" onclick="togglePassword()"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                            <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox"
+                            class="w-4 h-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500">
+                        <span class="text-sm text-slate-600">Ingat saya</span>
+                    </label>
+                    <a href="#" class="text-sm text-primary-600 hover:text-primary-700 font-medium">Lupa password?</a>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40">
+                    Masuk
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="flex items-center gap-4 my-6">
+                <div class="flex-1 h-px bg-slate-200"></div>
+                <span class="text-sm text-slate-400">atau</span>
+                <div class="flex-1 h-px bg-slate-200"></div>
+            </div>
+
+            <!-- MetaMask -->
+            <button onclick="connectWallet()"
+                class="w-full py-4 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-3 shadow-lg shadow-amber-500/30">
+                <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                    <path d="M27.8 4L17.4 11.7l1.9-4.6L27.8 4z" fill="#E2761B" />
+                    <path
+                        d="M4.2 4l10.3 7.8-1.8-4.7L4.2 4zm19.8 17.6l-2.8 4.2 5.9 1.6 1.7-5.8h-4.8zm-21.3 0l1.7 5.8 5.9-1.6-2.8-4.2H2.7z"
+                        fill="#E4761B" />
+                    <path
+                        d="M10.1 14l-1.6 2.5 5.8.3-.2-6.3-4 3.5zm11.8 0l-4.1-3.6-.1 6.4 5.8-.3-1.6-2.5zm-11.8 10.8l3.5-1.7-3-2.4-.5 4.1zm7.9-1.7l3.5 1.7-.5-4.1-3 2.4z"
+                        fill="#E4761B" />
+                    <path d="M21.5 24.8l-3.5-1.7.3 2.3v1l3.2-.6zm-10.9 0l3.2 1.6-.1-1-.1-2.3-3 1.7z" fill="#D7C1B3" />
+                    <path d="M13.6 19.7l-2.9-.9 2.1-1 .8 1.9zm4.8 0l.9-1.9 2.1 1-3 .9z" fill="#233447" />
+                    <path
+                        d="M10.6 24.8l.5-4.3-3.3.1 2.8 4.2zm10.3-4.3l.5 4.3 2.8-4.2-3.3-.1zm2.6-4l-5.8.3.5 3 .9-1.9 2.1 1 2.3-2.4zm-12.8 2.4l2.1-1 .8 1.9.6-3-5.8-.3 2.3 2.4z"
+                        fill="#CD6116" />
+                    <path
+                        d="M8.5 16.5l2.4 4.7-.1-2.3-2.3-2.4zm12.8 2.4l-.1 2.3 2.4-4.7-2.3 2.4zm-7.1-2.1l-.5 3 .7 3.6.2-4.7-.4-1.9zm3.6 0l-.4 1.9.1 4.7.7-3.6-.4-3z"
+                        fill="#E4751F" />
+                    <path d="M18.5 19.7l-.7 3.6.5.4 3-2.4.1-2.3-2.9.7zm-7.8-.7l.1 2.3 3 2.4.5-.4-.7-3.6-2.9-.7z"
+                        fill="#F6851B" />
+                    <path d="M18.6 25.4v-1l-.3-.2h-4.6l-.2.2v1l-3.2-1.6.9.7 1.8 1.3h4.7l1.8-1.3.9-.7-3.1 1.6z"
+                        fill="#C0AD9E" />
+                    <path d="M18 23.1l-.5-.4h-3l-.5.4-.1 2.3.2-.2h4.6l.3.2v-2.3z" fill="#161616" />
+                    <path
+                        d="M28.3 12.3l.9-4.2L27.8 4l-9.9 7.4 3.8 3.2 5.4 1.6 1.2-1.4-.5-.4 1-.9-.8-.6.9-.7-.6-.5zm-26.2-4.2l.9 4.2-.6.4.9.7-.8.6 1 .9-.5.4 1.2 1.4 5.4-1.6 3.8-3.2L4.2 4l-2.1 4.1z"
+                        fill="#763D16" />
+                    <path
+                        d="M27.1 16.2l-5.4-1.6 1.6 2.5-2.4 4.7 3.2-.1h4.8l-1.8-5.5zm-16.2-1.6l-5.4 1.6-1.8 5.5h4.7l3.2.1-2.3-4.7 1.6-2.5zm6.9 2.2l.3-5.4 1.6-4.3h-7.4l1.5 4.3.4 5.4.1 2 .1 4.6h3l.1-4.7.3-1.9z"
+                        fill="#F6851B" />
+                </svg>
+                Hubungkan MetaMask
+            </button>
+
+            <p class="text-center mt-8 text-slate-600">
+                Belum punya akun? <a href="register.html"
+                    class="text-primary-600 hover:text-primary-700 font-semibold">Daftar sebagai UMKM</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            showToast('Berhasil masuk! Mengalihkan...', 'success');
+            setTimeout(() => window.location.href = 'producer-dashboard.html', 1500);
+        });
+
+        function connectWallet() {
+            showToast('Menghubungkan ke MetaMask...', 'warning');
+            setTimeout(() => {
+                showToast('Wallet terhubung!', 'success');
+                setTimeout(() => window.location.href = 'producer-dashboard.html', 1000);
+            }, 1500);
+        }
+
+        function togglePassword() {
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function showToast(message, type) {
+            const colors = { success: 'bg-emerald-500', error: 'bg-red-500', warning: 'bg-amber-500' };
+            const toast = document.createElement('div');
+            toast.className = `${colors[type]} text-white px-4 py-3 rounded-xl shadow-lg`;
+            toast.textContent = message;
+            document.getElementById('toastContainer').appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+    </script>
+</body>
+
+</html>

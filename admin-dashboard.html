@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TraceHerbal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <a href="index.html" class="navbar-brand">
+                <svg viewBox="0 0 32 32" fill="none" style="width:32px;height:32px">
+                    <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+                    <path
+                        d="M16 6C16 6 10 12 10 18C10 21.3137 12.6863 24 16 24C19.3137 24 22 21.3137 22 18C22 12 16 6 16 6Z"
+                        fill="currentColor" />
+                </svg>
+                TraceHerbal
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="admin-dashboard.html" class="sidebar-link active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                Dashboard
+            </a>
+            <a href="#" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                Kelola UMKM
+            </a>
+            <a href="#" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4" />
+                    <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.12 0 4.07.74 5.62 1.98" />
+                </svg>
+                Verifikasi Data
+            </a>
+            <a href="#" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+                Laporan
+            </a>
+            <a href="#" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                        d="M12 1v6m0 6v6m11-7h-6m-6 0H1m17.07-7.07l-4.24 4.24m-5.66 5.66L2.93 17.07m14.14 0l-4.24-4.24M7.17 7.17L2.93 2.93" />
+                </svg>
+                Pengaturan
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl);">
+            <div>
+                <h2>Dashboard Admin</h2>
+                <p class="text-muted">Selamat datang kembali, Administrator</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-md);">
+                <div style="position: relative;">
+                    <input type="text" class="form-input" placeholder="Cari UMKM..."
+                        style="width: 280px; padding-left: 40px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted);">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </div>
+                <button class="btn btn-ghost btn-icon" style="position: relative;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                    <span
+                        style="position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background: var(--error); border-radius: 50%;"></span>
+                </button>
+                <div
+                    style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--bg); border-radius: var(--radius-full);">
+                    <div
+                        style="width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                        A</div>
+                    <span style="font-weight: 500;">Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stat Cards -->
+        <div class="grid grid-4 mb-xl">
+            <div class="stat-card">
+                <div class="stat-card-icon primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <div class="stat-card-value">2.263</div>
+                <div class="stat-card-label">UMKM Aktif</div>
+                <div class="stat-card-change up">↑ 12% dari bulan lalu</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon accent">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    </svg>
+                </div>
+                <div class="stat-card-value">145</div>
+                <div class="stat-card-label">Produk Hari Ini</div>
+                <div class="stat-card-change up">↑ 8% dari kemarin</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </div>
+                <div class="stat-card-value">1.205</div>
+                <div class="stat-card-label">Transaksi Blockchain</div>
+                <div class="stat-card-change up">↑ 24% minggu ini</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon secondary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                </div>
+                <div class="stat-card-value">23</div>
+                <div class="stat-card-label">Menunggu Verifikasi</div>
+                <div class="stat-card-change down">↓ 5% dari kemarin</div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-2 mb-xl">
+            <div class="card">
+                <div class="card-header flex-between">
+                    <h4>Aktivitas Harian</h4>
+                    <select class="form-select" style="width: auto;">
+                        <option>7 Hari Terakhir</option>
+                        <option>30 Hari Terakhir</option>
+                        <option>90 Hari Terakhir</option>
+                    </select>
+                </div>
+                <div class="card-body">
+                    <div style="height: 250px; display: flex; align-items: flex-end; gap: 8px; padding-top: 20px;">
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div
+                                style="width: 100%; background: linear-gradient(to top, var(--primary), var(--primary-light)); border-radius: 4px; height: 120px;">
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Sen</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div
+                                style="width: 100%; background: linear-gradient(to top, var(--primary), var(--primary-light)); border-radius: 4px; height: 180px;">
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Sel</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div
+                                style="width: 100%; background: linear-gradient(to top, var(--primary), var(--primary-light)); border-radius: 4px; height: 140px;">
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Rab</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div
+                                style="width: 100%; background: linear-gradient(to top, var(--primary), var(--primary-light)); border-radius: 4px; height: 200px;">
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Kam</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div
+                                style="width: 100%; background: linear-gradient(to top, var(--primary), var(--primary-light)); border-radius: 4px; height: 160px;">
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Jum</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div
+                                style="width: 100%; background: linear-gradient(to top, var(--primary), var(--primary-light)); border-radius: 4px; height: 90px;">
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Sab</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <div
+                                style="width: 100%; background: linear-gradient(to top, var(--accent), var(--accent-light)); border-radius: 4px; height: 220px;">
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Jenis Produk</h4>
+                </div>
+                <div class="card-body" style="display: flex; align-items: center; gap: var(--space-xl);">
+                    <div
+                        style="width: 180px; height: 180px; border-radius: 50%; background: conic-gradient(var(--primary) 0% 40%, var(--accent) 40% 65%, var(--secondary) 65% 85%, var(--success) 85% 100%); position: relative;">
+                        <div
+                            style="position: absolute; inset: 30px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                            <span style="font: var(--heading-md);">15K+</span>
+                            <span style="font-size: 12px; color: var(--text-muted);">Produk</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <span
+                                style="width: 12px; height: 12px; background: var(--primary); border-radius: 2px;"></span>
+                            <span style="font-size: 14px;">Jamu Tradisional (40%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <span
+                                style="width: 12px; height: 12px; background: var(--accent); border-radius: 2px;"></span>
+                            <span style="font-size: 14px;">Minuman Herbal (25%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <span
+                                style="width: 12px; height: 12px; background: var(--secondary); border-radius: 2px;"></span>
+                            <span style="font-size: 14px;">Suplemen (20%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <span
+                                style="width: 12px; height: 12px; background: var(--success); border-radius: 2px;"></span>
+                            <span style="font-size: 14px;">Lainnya (15%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-lg">
+            <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center;">
+                <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                    <label style="font-weight: 500; white-space: nowrap;">Tanggal:</label>
+                    <input type="date" class="form-input" style="width: auto;" value="2025-01-01">
+                    <span>-</span>
+                    <input type="date" class="form-input" style="width: auto;" value="2025-01-13">
+                </div>
+                <select class="form-select" style="width: auto;">
+                    <option>Semua Status</option>
+                    <option>Aktif</option>
+                    <option>Pending</option>
+                    <option>Ditolak</option>
+                </select>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-outline btn-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Export CSV
+                </button>
+            </div>
+        </div>
+
+        <!-- SME Table -->
+        <div class="card">
+            <div class="card-header flex-between">
+                <h4>Daftar UMKM</h4>
+                <button class="btn btn-primary btn-sm">+ Tambah UMKM</button>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nama UMKM</th>
+                            <th>Lokasi</th>
+                            <th>Status</th>
+                            <th>Tanggal Verifikasi</th>
+                            <th>Produk</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                                    <div
+                                        style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                        JS</div>
+                                    <div>
+                                        <div style="font-weight: 500;">Jamu Sehat Magelang</div>
+                                        <div style="font-size: 12px; color: var(--text-muted);">ID: UMK-2025-001</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Tidar Selatan, Magelang</td>
+                            <td><span class="badge badge-success">Aktif</span></td>
+                            <td>10 Jan 2025</td>
+                            <td>24</td>
+                            <td>
+                                <div class="table-actions">
+                                    <button class="btn btn-ghost btn-sm btn-icon"><svg width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                        </svg></button>
+                                    <button class="btn btn-ghost btn-sm btn-icon"><svg width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                        </svg></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                                    <div
+                                        style="width: 40px; height: 40px; background: var(--secondary); color: white; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                        HN</div>
+                                    <div>
+                                        <div style="font-weight: 500;">Herbal Nusantara</div>
+                                        <div style="font-size: 12px; color: var(--text-muted);">ID: UMK-2025-002</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Semarang, Jawa Tengah</td>
+                            <td><span class="badge badge-success">Aktif</span></td>
+                            <td>08 Jan 2025</td>
+                            <td>18</td>
+                            <td>
+                                <div class="table-actions">
+                                    <button class="btn btn-ghost btn-sm btn-icon"><svg width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                        </svg></button>
+                                    <button class="btn btn-ghost btn-sm btn-icon"><svg width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                        </svg></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                                    <div
+                                        style="width: 40px; height: 40px; background: var(--accent); color: white; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                        TJ</div>
+                                    <div>
+                                        <div style="font-weight: 500;">Toko Jamu Ibunda</div>
+                                        <div style="font-size: 12px; color: var(--text-muted);">ID: UMK-2025-003</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Yogyakarta</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <td>-</td>
+                            <td>0</td>
+                            <td>
+                                <div class="table-actions">
+                                    <button class="btn btn-ghost btn-sm btn-icon"><svg width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                        </svg></button>
+                                    <button class="btn btn-primary btn-sm">Verifikasi</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                                    <div
+                                        style="width: 40px; height: 40px; background: var(--error); color: white; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                        RH</div>
+                                    <div>
+                                        <div style="font-weight: 500;">Rempah Herba</div>
+                                        <div style="font-size: 12px; color: var(--text-muted);">ID: UMK-2024-156</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Solo, Jawa Tengah</td>
+                            <td><span class="badge badge-error">Ditolak</span></td>
+                            <td>-</td>
+                            <td>0</td>
+                            <td>
+                                <div class="table-actions">
+                                    <button class="btn btn-ghost btn-sm btn-icon"><svg width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                        </svg></button>
+                                    <button class="btn btn-ghost btn-sm btn-icon"><svg width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                        </svg></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer flex-between">
+                <span class="text-muted">Menampilkan 1-4 dari 2.263 UMKM</span>
+                <div style="display: flex; gap: var(--space-xs);">
+                    <button class="btn btn-ghost btn-sm" disabled>← Sebelumnya</button>
+                    <button class="btn btn-primary btn-sm">1</button>
+                    <button class="btn btn-ghost btn-sm">2</button>
+                    <button class="btn btn-ghost btn-sm">3</button>
+                    <button class="btn btn-ghost btn-sm">...</button>
+                    <button class="btn btn-ghost btn-sm">566</button>
+                    <button class="btn btn-ghost btn-sm">Selanjutnya →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

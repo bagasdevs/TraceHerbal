@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TraceHerbal - Verifikasi Produk Herbal Asli</title>
+  <meta name="description" content="Platform blockchain untuk memverifikasi keaslian produk herbal dari UMKM Indonesia">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b' },
+            accent: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309', 800: '#92400e', 900: '#78350f' },
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .animate-pulse-slow {
+      animation: pulse 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased bg-slate-50">
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 text-primary-700 font-bold text-xl">
+          <svg viewBox="0 0 32 32" fill="none" class="w-8 h-8">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+            <path d="M16 6C16 6 10 12 10 18C10 21.3137 12.6863 24 16 24C19.3137 24 22 21.3137 22 18C22 12 16 6 16 6Z"
+              fill="currentColor" />
+          </svg>
+          TraceHerbal
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Fitur</a>
+          <a href="#how-it-works" class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Cara
+            Kerja</a>
+          <a href="verify.html"
+            class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Verifikasi</a>
+          <a href="login.html"
+            class="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-primary-500/30">
+            Masuk
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#features"
+          class="block px-4 py-3 text-slate-700 hover:bg-primary-50 hover:text-primary-700 rounded-xl font-medium transition-colors">Fitur</a>
+        <a href="#how-it-works"
+          class="block px-4 py-3 text-slate-700 hover:bg-primary-50 hover:text-primary-700 rounded-xl font-medium transition-colors">Cara
+          Kerja</a>
+        <a href="verify.html"
+          class="block px-4 py-3 text-slate-700 hover:bg-primary-50 hover:text-primary-700 rounded-xl font-medium transition-colors">Verifikasi</a>
+        <a href="login.html"
+          class="block px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white text-center font-semibold rounded-xl transition-colors">
+          Masuk
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient min-h-screen flex items-center pt-16 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-emerald-300 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Content -->
+        <div class="text-white">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full mb-6">
+            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+            <span class="text-sm font-medium">Powered by Polygon Blockchain</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+            Verifikasi Keaslian<br>
+            <span class="text-emerald-300">Produk Herbal</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-emerald-100 mb-8 max-w-xl leading-relaxed">
+            Platform blockchain pertama di Indonesia untuk melacak dan memverifikasi produk jamu dari UMKM terpercaya.
+            Transparansi dari bahan baku hingga ke tangan konsumen.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="login.html"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-1">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Mulai Sekarang
+            </a>
+            <a href="verify.html"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 text-white font-semibold rounded-2xl transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Verifikasi Produk
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="flex flex-wrap items-center gap-6 mt-12">
+            <div class="flex items-center gap-2 text-emerald-200">
+              <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              <span class="text-sm">Blockchain Secured</span>
+            </div>
+            <div class="flex items-center gap-2 text-emerald-200">
+              <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-sm">BPOM Verified</span>
+            </div>
+            <div class="flex items-center gap-2 text-emerald-200">
+              <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <span class="text-sm">Data Encrypted</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image/Illustration -->
+        <div class="hidden lg:block">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-transparent rounded-3xl blur-2xl">
+            </div>
+            <div class="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 animate-float">
+              <!-- QR Code Preview -->
+              <div class="bg-white rounded-2xl p-6 shadow-2xl">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-800">Produk Terverifikasi</p>
+                    <p class="text-sm text-slate-500">Jamu Kunyit Asam</p>
+                  </div>
+                </div>
+                <div class="aspect-square bg-slate-100 rounded-xl flex items-center justify-center mb-4">
+                  <svg class="w-32 h-32 text-primary-600" viewBox="0 0 100 100" fill="currentColor">
+                    <rect x="10" y="10" width="20" height="20" rx="2" />
+                    <rect x="70" y="10" width="20" height="20" rx="2" />
+                    <rect x="10" y="70" width="20" height="20" rx="2" />
+                    <rect x="35" y="10" width="5" height="5" />
+                    <rect x="45" y="10" width="10" height="5" />
+                    <rect x="60" y="10" width="5" height="5" />
+                    <rect x="35" y="20" width="5" height="10" />
+                    <rect x="50" y="20" width="5" height="5" />
+                    <rect x="60" y="25" width="5" height="5" />
+                    <rect x="35" y="35" width="30" height="30" rx="4" />
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-slate-500">Batch #JM2025-015</span>
+                  <span class="px-2 py-1 bg-primary-100 text-primary-700 rounded-lg font-medium">✓ Asli</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 120" fill="none" class="w-full">
+        <path fill="#f8fafc" d="M0 120V60c240-40 480-60 720-40s480 60 720 40v60H0z" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-extrabold text-primary-600 mb-2">2.263</div>
+          <div class="text-slate-600 font-medium">UMKM Terdaftar</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-extrabold text-primary-600 mb-2">15K+</div>
+          <div class="text-slate-600 font-medium">Produk Verified</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-extrabold text-primary-600 mb-2">50K+</div>
+          <div class="text-slate-600 font-medium">Total Verifikasi</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-extrabold text-primary-600 mb-2">99.9%</div>
+          <div class="text-slate-600 font-medium">Uptime</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span
+          class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">FITUR
+          UNGGULAN</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Mengapa TraceHerbal?</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Teknologi blockchain memberikan transparansi penuh dalam
+          rantai pasok produk herbal Indonesia</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div
+          class="feature-card bg-white border border-slate-200 rounded-3xl p-8 transition-all duration-300 hover:border-primary-200">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-primary-500/30">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Scan QR Code</h3>
+          <p class="text-slate-600 leading-relaxed">Verifikasi keaslian produk dengan mudah hanya dengan memindai QR
+            code pada kemasan produk</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div
+          class="feature-card bg-white border border-slate-200 rounded-3xl p-8 transition-all duration-300 hover:border-primary-200">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-accent-500/30">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Lacak Rantai Pasok</h3>
+          <p class="text-slate-600 leading-relaxed">Lihat perjalanan produk dari bahan baku, produksi, hingga distribusi
+            secara real-time</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div
+          class="feature-card bg-white border border-slate-200 rounded-3xl p-8 transition-all duration-300 hover:border-primary-200">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-violet-500 to-violet-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-violet-500/30">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Blockchain Verified</h3>
+          <p class="text-slate-600 leading-relaxed">Data tersimpan permanen di blockchain Polygon, tidak dapat
+            dimanipulasi atau diubah</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-2 bg-accent-100 text-accent-700 rounded-full text-sm font-semibold mb-4">CARA
+          KERJA</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Proses Verifikasi Mudah</h2>
+        <p class="text-lg text-slate-600">Hanya 4 langkah untuk memastikan keaslian produk herbal Anda</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div
+            class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center text-white text-2xl font-bold shadow-xl shadow-primary-500/30">
+            1</div>
+          <h4 class="font-bold text-slate-900 mb-2">Beli Produk</h4>
+          <p class="text-sm text-slate-600">Dapatkan produk herbal dari UMKM terdaftar</p>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center text-white text-2xl font-bold shadow-xl shadow-primary-500/30">
+            2</div>
+          <h4 class="font-bold text-slate-900 mb-2">Scan QR</h4>
+          <p class="text-sm text-slate-600">Pindai kode QR pada kemasan</p>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center text-white text-2xl font-bold shadow-xl shadow-primary-500/30">
+            3</div>
+          <h4 class="font-bold text-slate-900 mb-2">Lihat Riwayat</h4>
+          <p class="text-sm text-slate-600">Telusuri perjalanan produk</p>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl flex items-center justify-center text-white text-2xl font-bold shadow-xl shadow-accent-500/30">
+            ✓</div>
+          <h4 class="font-bold text-slate-900 mb-2">Terjamin Asli</h4>
+          <p class="text-sm text-slate-600">Konfirmasi keaslian instan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 hero-gradient relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-10 right-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 left-10 w-96 h-96 bg-emerald-300 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Bergabung dengan UMKM<br>Herbal Terpercaya
+      </h2>
+      <p class="text-lg text-emerald-100 mb-10 max-w-2xl mx-auto">Daftarkan usaha Anda dan mulai gunakan teknologi
+        blockchain untuk meningkatkan kepercayaan konsumen</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="register.html"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-400 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:shadow-accent-500/30">
+          Daftar Sekarang
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="#"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 text-white font-semibold rounded-2xl transition-all">
+          Pelajari Lebih Lanjut
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 text-white font-bold text-xl mb-4">
+            <svg viewBox="0 0 32 32" fill="none" class="w-8 h-8">
+              <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+              <path d="M16 6C16 6 10 12 10 18C10 21.3137 12.6863 24 16 24C19.3137 24 22 21.3137 22 18C22 12 16 6 16 6Z"
+                fill="currentColor" />
+            </svg>
+            TraceHerbal
+          </a>
+          <p class="text-slate-400 text-sm mb-4">Platform blockchain untuk verifikasi keaslian produk herbal Indonesia
+          </p>
+          <div class="flex items-center gap-2 text-sm text-slate-500">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
+            </svg>
+            Powered by Polygon
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Produk</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="verify.html" class="hover:text-white transition-colors">Verifikasi</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Untuk UMKM</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Harga</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Perusahaan</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-white transition-colors">Tentang</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Karir</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Bantuan</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Kontak</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privasi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+        © 2025 TraceHerbal. Hak cipta dilindungi.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Close mobile menu on resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        document.getElementById('mobileMenu').classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+
+</html>
