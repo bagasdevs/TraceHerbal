@@ -38,8 +38,6 @@
                     </svg>
                     TraceHerbal
                 </a>
-
-                <!-- Desktop Nav -->
                 <div class="hidden lg:flex items-center gap-1">
                     <a href="producer-dashboard.html"
                         class="px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg font-medium transition-colors">Dashboard</a>
@@ -53,7 +51,6 @@
                         Code</a>
                     <a href="history.html" class="px-4 py-2 text-white bg-white/20 rounded-lg font-medium">Riwayat</a>
                 </div>
-
                 <div class="hidden sm:flex items-center gap-3">
                     <div class="flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full">
                         <div
@@ -61,10 +58,17 @@
                             JS</div>
                         <span class="text-white font-medium text-sm">Jamu Sehat</span>
                     </div>
+                    <a href="login.html" onclick="localStorage.clear();"
+                        class="flex items-center gap-2 px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-100 hover:text-white rounded-lg transition-colors"
+                        title="Logout">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        <span class="text-sm font-medium">Logout</span>
+                    </a>
                 </div>
-
-                <button class="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
-                    onclick="toggleMobileMenu()">
+                <button class="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg" onclick="toggleMobileMenu()">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -72,33 +76,42 @@
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden lg:hidden bg-primary-800">
             <div class="px-4 py-4 space-y-2">
                 <a href="producer-dashboard.html"
-                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium transition-colors">Dashboard</a>
+                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium">Dashboard</a>
                 <a href="raw-material-form.html"
-                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium transition-colors">Bahan
-                    Baku</a>
+                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium">Bahan Baku</a>
                 <a href="production-form.html"
-                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium transition-colors">Produksi</a>
+                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium">Produksi</a>
                 <a href="qr-generator.html"
-                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium transition-colors">QR
-                    Code</a>
+                    class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium">QR Code</a>
                 <a href="history.html" class="block px-4 py-3 text-white bg-white/20 rounded-xl font-medium">Riwayat</a>
+                <hr class="border-white/20 my-2">
+                <a href="login.html" onclick="localStorage.clear();"
+                    class="flex items-center gap-2 px-4 py-3 text-red-200 hover:bg-red-500/20 rounded-xl font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Logout
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="pt-20 pb-24 lg:pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <!-- Header -->
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-900">Riwayat Transaksi Blockchain</h1>
-                    <p class="text-slate-600">Semua aktivitas tercatat permanen di blockchain</p>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-2xl font-bold text-slate-900">Riwayat Transaksi Blockchain</h1>
+                        <span
+                            class="px-2 py-0.5 bg-accent-100 text-accent-700 text-xs font-semibold rounded-full">Transaction
+                            Translator</span>
+                    </div>
+                    <p class="text-slate-600">Semua aktivitas tercatat permanen dengan deskripsi yang mudah dipahami</p>
                 </div>
                 <button
                     class="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-slate-200 hover:border-primary-500 bg-white text-slate-700 font-medium rounded-xl transition-colors">
@@ -116,10 +129,10 @@
                     <div class="flex items-center gap-2">
                         <span class="text-sm font-medium text-slate-700">Periode:</span>
                         <input type="date" value="2025-01-01"
-                            class="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none">
+                            class="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 outline-none">
                         <span class="text-slate-400">-</span>
-                        <input type="date" value="2025-01-13"
-                            class="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none">
+                        <input type="date" value="2025-01-14"
+                            class="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 outline-none">
                     </div>
                     <select
                         class="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 outline-none">
@@ -128,17 +141,10 @@
                         <option>Produksi</option>
                         <option>QR Code</option>
                     </select>
-                    <select
-                        class="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 outline-none">
-                        <option>Semua Status</option>
-                        <option>Sukses</option>
-                        <option>Pending</option>
-                        <option>Gagal</option>
-                    </select>
                     <div class="flex-1"></div>
                     <div class="relative">
-                        <input type="text" placeholder="Cari hash atau batch..."
-                            class="w-full sm:w-64 pl-10 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none">
+                        <input type="text" placeholder="Cari aktivitas..."
+                            class="w-full sm:w-64 pl-10 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:border-primary-500 outline-none">
                         <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <circle cx="11" cy="11" r="8" />
@@ -151,190 +157,241 @@
             <!-- Stats -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <div class="bg-white rounded-2xl border border-slate-200 p-5">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div
-                            class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
+                    <div
+                        class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
                     </div>
-                    <div class="text-2xl font-bold text-slate-900">1.205</div>
+                    <div class="text-2xl font-bold text-slate-900">1,205</div>
                     <div class="text-sm text-slate-500">Total Transaksi</div>
                 </div>
                 <div class="bg-white rounded-2xl border border-slate-200 p-5">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div
-                            class="w-10 h-10 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                            </svg>
-                        </div>
+                    <div
+                        class="w-10 h-10 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
                     </div>
                     <div class="text-2xl font-bold text-slate-900">342</div>
                     <div class="text-sm text-slate-500">Bahan Baku</div>
                 </div>
                 <div class="bg-white rounded-2xl border border-slate-200 p-5">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                            </svg>
-                        </div>
+                    <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
                     </div>
                     <div class="text-2xl font-bold text-slate-900">521</div>
                     <div class="text-sm text-slate-500">Produksi</div>
                 </div>
                 <div class="bg-white rounded-2xl border border-slate-200 p-5">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div
-                            class="w-10 h-10 bg-violet-100 text-violet-600 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
-                            </svg>
-                        </div>
+                    <div
+                        class="w-10 h-10 bg-violet-100 text-violet-600 rounded-xl flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                        </svg>
                     </div>
                     <div class="text-2xl font-bold text-slate-900">342</div>
                     <div class="text-sm text-slate-500">QR Generated</div>
                 </div>
             </div>
 
-            <!-- Table -->
+            <!-- Transaction Table with Activity Description - NEW FEATURE -->
             <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <h3 class="font-semibold text-slate-900">Transaction Log</h3>
+                        <span
+                            class="px-2 py-0.5 bg-primary-100 text-primary-700 text-xs font-medium rounded-full">Human-Readable</span>
+                    </div>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm">
                         <thead class="bg-slate-50 border-b border-slate-200">
                             <tr>
-                                <th class="text-left px-6 py-4 font-semibold text-slate-700">Tanggal</th>
-                                <th class="text-left px-6 py-4 font-semibold text-slate-700">Jenis</th>
-                                <th class="text-left px-6 py-4 font-semibold text-slate-700">Deskripsi</th>
+                                <th class="text-left px-6 py-4 font-semibold text-slate-700">Waktu</th>
                                 <th class="text-left px-6 py-4 font-semibold text-slate-700">Tx Hash</th>
+                                <th class="text-left px-6 py-4 font-semibold text-slate-700">
+                                    <div class="flex items-center gap-1">
+                                        Deskripsi Aktivitas
+                                        <span
+                                            class="px-1.5 py-0.5 bg-accent-100 text-accent-700 text-[10px] font-bold rounded">TRANSLATED</span>
+                                    </div>
+                                </th>
                                 <th class="text-left px-6 py-4 font-semibold text-slate-700">Status</th>
                                 <th class="text-left px-6 py-4 font-semibold text-slate-700">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
+                            <!-- Row 1 -->
                             <tr class="hover:bg-slate-50 transition-colors">
                                 <td class="px-6 py-4">
-                                    <div class="font-medium">13 Jan 2025</div>
+                                    <div class="font-medium">14 Jan 2025</div>
                                     <div class="text-slate-500 text-xs">10:30 WIB</div>
                                 </td>
-                                <td class="px-6 py-4"><span
-                                        class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-lg">Produksi</span>
+                                <td class="px-6 py-4">
+                                    <code class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x7a8f...3d2e</code>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="font-medium">Batch JM2025-015</div>
-                                    <div class="text-slate-500 text-xs">Jamu Kunyit Asam - 500 unit</div>
+                                    <!-- Human-Readable Activity Description - NEW -->
+                                    <div class="bg-primary-50 border border-primary-200 rounded-lg p-3">
+                                        <div class="flex items-start gap-2">
+                                            <span class="text-primary-600 mt-0.5">📦</span>
+                                            <div>
+                                                <div class="font-medium text-slate-900">Batch #JM2025-015 diproduksi
+                                                </div>
+                                                <div class="text-slate-600 text-xs mt-0.5">Jamu Kunyit Asam • 500 sachet
+                                                    • Bahan: 25kg Kunyit + 15kg Asam Jawa</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td class="px-6 py-4"><code
-                                        class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x7a8f...3d2e</code>
-                                </td>
-                                <td class="px-6 py-4"><span
+                                <td class="px-6 py-4">
+                                    <span
                                         class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-lg">✓
-                                        Sukses</span></td>
-                                <td class="px-6 py-4"><a href="https://polygonscan.com" target="_blank"
-                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block transition-colors"><svg
-                                            class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
+                                        Sukses</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="https://polygonscan.com" target="_blank"
+                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block">
+                                        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                        </svg></a></td>
+                                        </svg>
+                                    </a>
+                                </td>
                             </tr>
+
+                            <!-- Row 2 -->
                             <tr class="hover:bg-slate-50 transition-colors">
                                 <td class="px-6 py-4">
                                     <div class="font-medium">13 Jan 2025</div>
                                     <div class="text-slate-500 text-xs">09:15 WIB</div>
                                 </td>
-                                <td class="px-6 py-4"><span
-                                        class="px-2.5 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-lg">Bahan
-                                        Baku</span></td>
                                 <td class="px-6 py-4">
-                                    <div class="font-medium">Kunyit 25 kg</div>
-                                    <div class="text-slate-500 text-xs">Supplier: Tani Makmur</div>
+                                    <code class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x4b2c...8f1a</code>
                                 </td>
-                                <td class="px-6 py-4"><code
-                                        class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x4b2c...8f1a</code>
+                                <td class="px-6 py-4">
+                                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                                        <div class="flex items-start gap-2">
+                                            <span class="text-blue-600 mt-0.5">🌿</span>
+                                            <div>
+                                                <div class="font-medium text-slate-900">Bahan baku ditambahkan</div>
+                                                <div class="text-slate-600 text-xs mt-0.5">Kunyit 25kg • Supplier: Tani
+                                                    Makmur, Magelang</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td class="px-6 py-4"><span
+                                <td class="px-6 py-4">
+                                    <span
                                         class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-lg">✓
-                                        Sukses</span></td>
-                                <td class="px-6 py-4"><a href="https://polygonscan.com" target="_blank"
-                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block transition-colors"><svg
-                                            class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
+                                        Sukses</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="https://polygonscan.com" target="_blank"
+                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block">
+                                        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                        </svg></a></td>
+                                        </svg>
+                                    </a>
+                                </td>
                             </tr>
+
+                            <!-- Row 3 -->
                             <tr class="hover:bg-slate-50 transition-colors">
                                 <td class="px-6 py-4">
                                     <div class="font-medium">12 Jan 2025</div>
                                     <div class="text-slate-500 text-xs">16:45 WIB</div>
                                 </td>
-                                <td class="px-6 py-4"><span
-                                        class="px-2.5 py-1 bg-amber-100 text-amber-700 text-xs font-medium rounded-lg">QR
-                                        Code</span></td>
                                 <td class="px-6 py-4">
-                                    <div class="font-medium">Generate 200 QR</div>
-                                    <div class="text-slate-500 text-xs">Batch JM2025-014</div>
+                                    <code class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x9e3d...2c5b</code>
                                 </td>
-                                <td class="px-6 py-4"><code
-                                        class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x9e3d...2c5b</code>
+                                <td class="px-6 py-4">
+                                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                                        <div class="flex items-start gap-2">
+                                            <span class="text-amber-600 mt-0.5">🏷️</span>
+                                            <div>
+                                                <div class="font-medium text-slate-900">QR Code di-generate</div>
+                                                <div class="text-slate-600 text-xs mt-0.5">200 label PDF • Batch
+                                                    #JM2025-014 • Wedang Jahe</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td class="px-6 py-4"><span
+                                <td class="px-6 py-4">
+                                    <span
                                         class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-lg">✓
-                                        Sukses</span></td>
-                                <td class="px-6 py-4"><a href="https://polygonscan.com" target="_blank"
-                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block transition-colors"><svg
-                                            class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
+                                        Sukses</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="https://polygonscan.com" target="_blank"
+                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block">
+                                        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                        </svg></a></td>
+                                        </svg>
+                                    </a>
+                                </td>
                             </tr>
+
+                            <!-- Row 4 -->
                             <tr class="hover:bg-slate-50 transition-colors">
                                 <td class="px-6 py-4">
                                     <div class="font-medium">12 Jan 2025</div>
                                     <div class="text-slate-500 text-xs">14:20 WIB</div>
                                 </td>
-                                <td class="px-6 py-4"><span
-                                        class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-lg">Produksi</span>
+                                <td class="px-6 py-4">
+                                    <code class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x1f7e...9a4c</code>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="font-medium">Batch JM2025-014</div>
-                                    <div class="text-slate-500 text-xs">Wedang Jahe - 300 unit</div>
+                                    <div class="bg-primary-50 border border-primary-200 rounded-lg p-3">
+                                        <div class="flex items-start gap-2">
+                                            <span class="text-primary-600 mt-0.5">📦</span>
+                                            <div>
+                                                <div class="font-medium text-slate-900">Batch #JM2025-014 diproduksi
+                                                </div>
+                                                <div class="text-slate-600 text-xs mt-0.5">Wedang Jahe • 300 sachet •
+                                                    Bahan: 50kg Jahe Merah</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td class="px-6 py-4"><code
-                                        class="px-2 py-1 bg-slate-100 rounded text-xs font-mono">0x1f7e...9a4c</code>
-                                </td>
-                                <td class="px-6 py-4"><span
+                                <td class="px-6 py-4">
+                                    <span
                                         class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-lg">✓
-                                        Sukses</span></td>
-                                <td class="px-6 py-4"><a href="https://polygonscan.com" target="_blank"
-                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block transition-colors"><svg
-                                            class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
+                                        Sukses</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="https://polygonscan.com" target="_blank"
+                                        class="p-2 hover:bg-slate-100 rounded-lg inline-block">
+                                        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                        </svg></a></td>
+                                        </svg>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div
                     class="px-6 py-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <span class="text-sm text-slate-500">Menampilkan 1-4 dari 1.205 transaksi</span>
+                    <span class="text-sm text-slate-500">Menampilkan 1-4 dari 1,205 transaksi</span>
                     <div class="flex gap-1">
                         <button class="px-3 py-1.5 text-sm text-slate-400 rounded-lg" disabled>← Sebelumnya</button>
                         <button class="px-3 py-1.5 text-sm bg-primary-600 text-white rounded-lg font-medium">1</button>
                         <button class="px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">2</button>
                         <button class="px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">3</button>
-                        <button class="px-3 py-1.5 text-sm text-slate-400 rounded-lg">...</button>
-                        <button class="px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">201</button>
                         <button class="px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Selanjutnya
                             →</button>
                     </div>
@@ -351,9 +408,9 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <h4 class="font-semibold text-white mb-1">Terhubung ke Polygon Network</h4>
-                        <p class="text-slate-400 text-sm">Semua transaksi tercatat di blockchain publik dan dapat
-                            diverifikasi</p>
+                        <h4 class="font-semibold text-white mb-1">Transaction Translator Active</h4>
+                        <p class="text-slate-400 text-sm">Semua transaksi blockchain diterjemahkan ke bahasa yang mudah
+                            dipahami</p>
                     </div>
                     <a href="https://polygonscan.com" target="_blank"
                         class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl transition-colors">
@@ -367,45 +424,32 @@
     <!-- Mobile Bottom Nav -->
     <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 z-50">
         <div class="flex justify-around">
-            <a href="producer-dashboard.html"
-                class="flex flex-col items-center gap-1 py-2 px-4 text-slate-500 hover:text-primary-600 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="producer-dashboard.html" class="flex flex-col items-center gap-1 py-2 px-4 text-slate-500"><svg
+                    class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-                <span class="text-xs font-medium">Home</span>
-            </a>
-            <a href="raw-material-form.html"
-                class="flex flex-col items-center gap-1 py-2 px-4 text-slate-500 hover:text-primary-600 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </svg><span class="text-xs font-medium">Home</span></a>
+            <a href="raw-material-form.html" class="flex flex-col items-center gap-1 py-2 px-4 text-slate-500"><svg
+                    class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-                <span class="text-xs font-medium">Bahan</span>
-            </a>
-            <a href="qr-generator.html"
-                class="flex flex-col items-center gap-1 py-2 px-4 text-slate-500 hover:text-primary-600 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </svg><span class="text-xs font-medium">Bahan</span></a>
+            <a href="qr-generator.html" class="flex flex-col items-center gap-1 py-2 px-4 text-slate-500"><svg
+                    class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
-                </svg>
-                <span class="text-xs font-medium">QR</span>
-            </a>
-            <a href="history.html" class="flex flex-col items-center gap-1 py-2 px-4 text-primary-600">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </svg><span class="text-xs font-medium">QR</span></a>
+            <a href="history.html" class="flex flex-col items-center gap-1 py-2 px-4 text-primary-600"><svg
+                    class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span class="text-xs font-medium">Riwayat</span>
-            </a>
+                </svg><span class="text-xs font-medium">Riwayat</span></a>
         </div>
     </nav>
 
     <script src="app.js"></script>
     <script>
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        }
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
     </script>
 </body>
 

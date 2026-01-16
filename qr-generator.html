@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator QR Code - TraceHerbal</title>
+    <title>Smart Labeling - Generator QR Code - TraceHerbal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -51,11 +51,22 @@
                     <a href="history.html"
                         class="px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg font-medium transition-colors">Riwayat</a>
                 </div>
-                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full">
-                    <div
-                        class="w-8 h-8 bg-accent-500 text-white rounded-full flex items-center justify-center font-semibold text-sm">
-                        JS</div>
-                    <span class="text-white font-medium text-sm">Jamu Sehat</span>
+                <div class="hidden sm:flex items-center gap-3">
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full">
+                        <div
+                            class="w-8 h-8 bg-accent-500 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                            JS</div>
+                        <span class="text-white font-medium text-sm">Jamu Sehat</span>
+                    </div>
+                    <a href="login.html" onclick="localStorage.clear();"
+                        class="flex items-center gap-2 px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-100 hover:text-white rounded-lg transition-colors"
+                        title="Logout">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        <span class="text-sm font-medium">Logout</span>
+                    </a>
                 </div>
                 <button class="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg" onclick="toggleMobileMenu()">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,27 +88,37 @@
                     Code</a>
                 <a href="history.html"
                     class="block px-4 py-3 text-white/80 hover:bg-white/10 rounded-xl font-medium">Riwayat</a>
+                <hr class="border-white/20 my-2">
+                <a href="login.html" onclick="localStorage.clear();"
+                    class="flex items-center gap-2 px-4 py-3 text-red-200 hover:bg-red-500/20 rounded-xl font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Logout
+                </a>
             </div>
         </div>
     </nav>
 
     <main class="pt-20 pb-24 lg:pb-8">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <!-- Breadcrumb -->
             <div class="flex items-center gap-2 text-sm mb-6">
                 <a href="producer-dashboard.html" class="text-slate-500 hover:text-primary-600">Dashboard</a>
                 <span class="text-slate-400">/</span>
-                <span class="text-slate-900 font-medium">Generator QR Code</span>
+                <span class="text-slate-900 font-medium">Smart Labeling - Generator QR Code</span>
             </div>
 
             <div class="mb-6">
-                <h1 class="text-2xl font-bold text-slate-900">Generator QR Code</h1>
-                <p class="text-slate-600">Buat kode QR untuk verifikasi produk</p>
+                <h1 class="text-2xl font-bold text-slate-900">Smart Labeling</h1>
+                <p class="text-slate-600">Buat label siap cetak dengan QR Code untuk kemasan produk</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-6">
-                <!-- Left: Form -->
+                <!-- Left: Settings -->
                 <div class="space-y-6">
+                    <!-- Batch Selection -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-6">
                         <h3 class="font-semibold text-slate-900 mb-4">Pilih Batch Produk</h3>
                         <div class="space-y-4">
@@ -113,39 +134,72 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Jumlah QR Code</label>
-                                <input type="number" value="1" min="1" max="1000"
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Jumlah Label</label>
+                                <input type="number" value="100" min="1" max="1000"
                                     class="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none">
-                                <p class="text-xs text-slate-500 mt-1">Maksimal 1000 per batch</p>
+                                <p class="text-xs text-slate-500 mt-1">Maksimal 1000 label per batch</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Format Settings - NEW FEATURE -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <h3 class="font-semibold text-slate-900">Format Output</h3>
+                            <span
+                                class="px-2 py-0.5 bg-accent-100 text-accent-700 text-xs font-semibold rounded-full">NEW</span>
+                        </div>
+                        <div class="space-y-4">
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Ukuran QR</label>
-                                <div class="grid grid-cols-3 gap-2">
+                                <label class="block text-sm font-medium text-slate-700 mb-2">File Format *</label>
+                                <div class="grid grid-cols-2 gap-3">
                                     <label
-                                        class="flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary-300 transition-colors">
-                                        <input type="radio" name="size" value="small" class="sr-only">
-                                        <span class="text-sm">3x3 cm</span>
+                                        class="flex items-center gap-3 p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary-300 transition-colors has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50">
+                                        <input type="radio" name="format" value="png" class="w-5 h-5 text-primary-600">
+                                        <div>
+                                            <div class="font-medium text-slate-900">PNG (Image)</div>
+                                            <div class="text-xs text-slate-500">Untuk digital/web</div>
+                                        </div>
                                     </label>
                                     <label
-                                        class="flex items-center justify-center p-3 border-2 border-primary-500 bg-primary-50 rounded-xl cursor-pointer">
-                                        <input type="radio" name="size" value="medium" checked class="sr-only">
-                                        <span class="text-sm font-medium text-primary-700">5x5 cm</span>
-                                    </label>
-                                    <label
-                                        class="flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary-300 transition-colors">
-                                        <input type="radio" name="size" value="large" class="sr-only">
-                                        <span class="text-sm">8x8 cm</span>
+                                        class="flex items-center gap-3 p-4 border-2 border-primary-500 bg-primary-50 rounded-xl cursor-pointer">
+                                        <input type="radio" name="format" value="pdf" checked
+                                            class="w-5 h-5 text-primary-600">
+                                        <div>
+                                            <div class="font-medium text-primary-700">PDF (Ready-to-Print)</div>
+                                            <div class="text-xs text-primary-600">Untuk cetak label</div>
+                                        </div>
                                     </label>
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Format</label>
-                                <select
-                                    class="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-primary-500 outline-none">
-                                    <option>PNG (Rekomendasi)</option>
-                                    <option>SVG (Vector)</option>
-                                    <option>PDF (Cetak)</option>
-                                </select>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Label Size *</label>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <label
+                                        class="flex flex-col items-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary-300 transition-colors has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50">
+                                        <input type="radio" name="size" value="3x3" class="sr-only">
+                                        <span class="text-lg mb-1">📄</span>
+                                        <span class="text-sm font-medium">3x3 cm</span>
+                                    </label>
+                                    <label
+                                        class="flex flex-col items-center p-3 border-2 border-primary-500 bg-primary-50 rounded-xl cursor-pointer">
+                                        <input type="radio" name="size" value="5x5" checked class="sr-only">
+                                        <span class="text-lg mb-1">📋</span>
+                                        <span class="text-sm font-medium text-primary-700">5x5 cm</span>
+                                    </label>
+                                    <label
+                                        class="flex flex-col items-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary-300 transition-colors">
+                                        <input type="radio" name="size" value="8x8" class="sr-only">
+                                        <span class="text-lg mb-1">🖼️</span>
+                                        <span class="text-sm font-medium">8x8 cm</span>
+                                    </label>
+                                    <label
+                                        class="flex flex-col items-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary-300 transition-colors">
+                                        <input type="radio" name="size" value="custom" class="sr-only">
+                                        <span class="text-lg mb-1">⚙️</span>
+                                        <span class="text-sm font-medium">Custom</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -160,46 +214,77 @@
                                     2025</span></div>
                             <div class="flex justify-between"><span class="text-slate-500">Kadaluarsa:</span><span>13
                                     Jan 2026</span></div>
-                            <div class="flex justify-between"><span class="text-slate-500">Total Unit:</span><span>500
-                                    sachet</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">PIRT:</span><span>P-IRT
+                                    2093302010123</span></div>
                             <div class="flex justify-between"><span class="text-slate-500">Status:</span><span
                                     class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-lg">✓
-                                    Blockchain</span></div>
+                                    Blockchain Verified</span></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: QR Preview -->
+                <!-- Right: Label Preview - NEW FEATURE -->
                 <div class="space-y-6">
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 text-center">
-                        <h3 class="font-semibold text-slate-900 mb-6">Preview QR Code</h3>
-                        <div class="inline-block p-6 bg-slate-50 rounded-2xl mb-4">
-                            <svg viewBox="0 0 100 100" class="w-48 h-48 mx-auto" fill="#059669">
-                                <rect x="10" y="10" width="20" height="20" rx="2" />
-                                <rect x="70" y="10" width="20" height="20" rx="2" />
-                                <rect x="10" y="70" width="20" height="20" rx="2" />
-                                <rect x="35" y="10" width="5" height="5" />
-                                <rect x="45" y="10" width="10" height="5" />
-                                <rect x="60" y="10" width="5" height="5" />
-                                <rect x="35" y="20" width="5" height="10" />
-                                <rect x="50" y="20" width="5" height="5" />
-                                <rect x="35" y="35" width="30" height="30" rx="4" />
-                                <circle cx="50" cy="50" r="8" fill="white" />
-                                <circle cx="50" cy="50" r="6" fill="#059669" />
-                            </svg>
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-semibold text-slate-900">Preview Label</h3>
+                            <span class="text-sm text-slate-500">5x5 cm • PDF</span>
                         </div>
-                        <p class="text-sm text-slate-600 mb-6">
-                            <span class="font-semibold">Batch:</span> JM2025-015<br>
-                            <span class="text-xs text-slate-400">Scan untuk verifikasi</span>
-                        </p>
+
+                        <!-- Label Preview Area - Shows QR on label layout -->
+                        <div class="bg-slate-100 rounded-xl p-6 mb-6">
+                            <div class="bg-white border-2 border-dashed border-slate-300 rounded-lg p-4 mx-auto"
+                                style="max-width: 280px;">
+                                <!-- Simulated Label Layout -->
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-2 mb-3">
+                                        <svg viewBox="0 0 32 32" fill="none" class="w-6 h-6 text-primary-600">
+                                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+                                            <path
+                                                d="M16 6C16 6 10 12 10 18C10 21.3137 12.6863 24 16 24C19.3137 24 22 21.3137 22 18C22 12 16 6 16 6Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                        <span class="font-bold text-primary-700 text-sm">TraceHerbal</span>
+                                    </div>
+
+                                    <!-- QR Code on Label -->
+                                    <div class="inline-block p-3 bg-white border border-slate-200 rounded-lg mb-3">
+                                        <svg viewBox="0 0 100 100" class="w-32 h-32 mx-auto" fill="#059669">
+                                            <rect x="10" y="10" width="20" height="20" rx="2" />
+                                            <rect x="70" y="10" width="20" height="20" rx="2" />
+                                            <rect x="10" y="70" width="20" height="20" rx="2" />
+                                            <rect x="35" y="10" width="5" height="5" />
+                                            <rect x="45" y="10" width="10" height="5" />
+                                            <rect x="60" y="10" width="5" height="5" />
+                                            <rect x="35" y="20" width="5" height="10" />
+                                            <rect x="50" y="20" width="5" height="5" />
+                                            <rect x="35" y="35" width="30" height="30" rx="4" />
+                                            <circle cx="50" cy="50" r="8" fill="white" />
+                                            <circle cx="50" cy="50" r="6" fill="#059669" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="text-xs text-slate-700 font-semibold mb-1">Jamu Kunyit Asam</div>
+                                    <div class="text-xs text-slate-500 mb-2">Batch: JM2025-015</div>
+                                    <div class="text-[10px] text-slate-400">Scan untuk verifikasi keaslian</div>
+                                    <div class="mt-2 pt-2 border-t border-slate-200">
+                                        <div class="text-[10px] text-slate-400">Exp: 13 Jan 2026 | PIRT: 2093302010123
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center text-xs text-slate-500 mt-4">Preview label siap cetak (5x5 cm)</p>
+                        </div>
+
+                        <!-- Action Buttons -->
                         <div class="space-y-3">
-                            <button onclick="downloadQR()"
-                                class="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
+                            <button onclick="generateLabel()"
+                                class="w-full py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
-                                Download PNG
+                                Download PDF (100 Labels)
                             </button>
                             <div class="grid grid-cols-2 gap-3">
                                 <button
@@ -208,27 +293,33 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                                     </svg>
-                                    Print
+                                    Print Direct
                                 </button>
                                 <button
                                     class="py-3 border-2 border-slate-200 hover:border-primary-500 text-slate-700 font-medium rounded-xl transition-colors flex items-center justify-center gap-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                     </svg>
-                                    Share
+                                    Preview Full
                                 </button>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Tips -->
                     <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-6 border border-amber-200">
                         <div class="flex gap-4">
                             <span class="text-2xl">💡</span>
                             <div>
-                                <h4 class="font-semibold text-slate-900 mb-1">Tips</h4>
-                                <p class="text-sm text-slate-600">Tempel QR code pada kemasan produk. Konsumen dapat
-                                    scan untuk melihat seluruh riwayat produksi.</p>
+                                <h4 class="font-semibold text-slate-900 mb-1">Tips Smart Labeling</h4>
+                                <ul class="text-sm text-slate-600 space-y-1">
+                                    <li>• Gunakan PDF untuk hasil cetak terbaik</li>
+                                    <li>• Ukuran 5x5cm ideal untuk kemasan sachet</li>
+                                    <li>• Label sudah termasuk info PIRT & kadaluarsa</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -268,10 +359,10 @@
     <script src="app.js"></script>
     <script>
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-        function downloadQR() {
+        function generateLabel() {
             const toast = document.createElement('div');
             toast.className = 'bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg';
-            toast.innerHTML = '<strong>QR Code diunduh!</strong>';
+            toast.innerHTML = '<strong>PDF Generated!</strong> 100 labels ready to print';
             document.getElementById('toastContainer').appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         }
